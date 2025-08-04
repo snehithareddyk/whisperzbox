@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D1ZVCK2K1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D1ZVCK2K1');
+  </script>
+
+  <title>WhisperzBox</title>
+</head>
+<body>
+  <div class="page-container">
+    <nav class="navbar">
+      <div class="logo">WhisperzBox.</div>
+      <button class="nav-toggle" id="navToggle">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#aboutsection">About</a></li>
+        <li><a href="#contactsection">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="auth-section" id="authSection">
+        <div class="box">
+          <h2>Sign Up / Sign In</h2>
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="password" id="password" placeholder="Password (Atleast 6 characters)" required />
+          <div class="auth-buttons">
+            <button id="signupBtn">Sign Up</button>
+            <button id="signinBtn">Sign In</button>
+          </div>
+          <div id="authError" class="error"></div>
+        </div>
+      </section>
+
+      <section class="box1" id="mainContent" style="display:none;">
+          <div class="confession-section" id="confessionSection">
+            
+            <textarea id="confessionText" rows="8" placeholder="Write your confession here..." required></textarea>
+            <select id="categoryDropdown">
+              <option value="">Select a category</option>
+              <option value="Friendship">Friends & Fam</option>
+              <option value="Love">Love</option>
+              <option value="Life">Life</option>
+              <option value="Regrets">Regrets & Guilt</option>
+              <option value="Awkward">Awkward Moments</option>
+            </select>
+            <div class="addconf"><button id="addConfessionBtn">Add Confession</button></div>
+            <div class="logout"><button id="logoutBtn" class="logout-btn">Logout</button></div>
+            <div id="addConfessionError" class="error"></div>
+          </div>
+
+          <div class="search-section" id="searchSection">
+            <input type="text" id="searchInput" placeholder="Search confessions..." />
+            <div id="categoryFilters" class="categoryFilters">
+              <button data-category="">All</button>
+              <button data-category="Friendship">Friends & Fam</button>
+              <button data-category="Love">Love</button>
+              <button data-category="Life">Life</button>
+              <button data-category="Regrets">Regrets & Guilt</button>
+              <button data-category="Awkward">Awkward Moments</button>
+            </div>
+            <ul id="confessionsList"></ul>
+            <!-- Pagination Controls -->
+            <div id="paginationControls" style="display:none;">
+              <button id="prevBtn">Previous</button>
+              <span id="pageInfo">Page 1</span>
+              <button id="nextBtn">Next</button>
+            </div>
+          </div>
+      </section>
+
+      <section id="servicessection">
+        <div class="services">
+          <div class="services-header">
+            <h2>Need to Confess Anonymously?</h2>
+            <p>It's the perfect platform to share your thoughts without revealing who you are.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-item">
+              <i class="fa-solid fa-users"></i>
+              <h3>Sign In Securely</h3>
+              <p>Join our community with a secure sign-in process to start sharing your secrets.</p>
+            </div>
+            <div class="service-item">
+              <i class="fa-regular fa-square-plus"></i>
+              <h3>Add a Confession</h3>
+              <p>Speak your mind freely and respectfully. Your voice is safe here.</p>
+            </div>
+            <div class="service-item">
+              <i class="fa-solid fa-user-secret"></i>
+              <h3>Read Anonymously</h3>
+              <p>Discover the untold stories and shared experiences of others from around the world.</p>
+            </div>
+            <div class="service-item">
+              <i class="fa-solid fa-thumbs-up"></i>
+              <h3>React and Support</h3>
+              <p>Show support and connect with others by reacting to confessions that resonate with you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="aboutsection">
+        <div class="container1">
+          <div class="about-us">
+            <h2>About Us</h2>
+            <p>
+              Welcome to WhisperzBox, a unique platform designed to give everyone a voice. Our mission is to create a safe, anonymous space where individuals can share their confessions, explore the thoughts of others, and connect through meaningful reactions.
+              </p>
+              <p>
+              Built on the values of inclusivity and authenticity, WhisperBoxx empowers users to express themselves freely without fear of judgment. Whether you’re here to unburden your heart, find solace in shared experiences, or simply engage with stories that resonate you.
+              </p>
+              <p>
+              Join us as every voice is heard, every story matters, and every whisper becomes a step toward understanding and empathy. Let’s embrace the power of unfiltered expression!
+              </p>
+          </div>
+          <div class="contact" id="contactsection">
+            <div class="contact-section">
+                <h2>Contact Us</h2>
+                <form class="contact-form" name="contact-form">
+                  <input type="text" name="name" placeholder="Name" required aria-label="Name">
+                  <input type="email" name="email" placeholder="Email" required aria-label="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                  <input type="text" name="subject" placeholder="Subject" required aria-label="Subject">
+                  <textarea name="message" placeholder="Share your Thoughts" required aria-label="Message"></textarea>
+                  <button type="submit">Send Message</button>
+                  <p style="margin:10px auto; text-align:center;" id="form-status"></p>
+                </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <p>&copy; 2024 WhisperzBox. All Rights Reserved.</p>
+        <ul class="social-links">
+          <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
+          <li><a href="#"><i class="bx bxl-youtube"></i></a></li>
+          <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('show');
+    });
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbysVkRoeFp3EKXVfhZ_V5VgBHCVQoVmDjWmCyTqRD2b0eo2P7zg5tQQj6486APaxkg/exec';
+    const form = document.forms['contact-form'];
+    const statusElement = document.getElementById('form-status');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        statusElement.innerText = 'Sending...';
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(() => { statusElement.innerText = 'Message sent successfully!'; form.reset(); })
+            .catch(() => { statusElement.innerText = 'Error sending message!'; });
+    });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBKYiaMvGVCImG0fUCg_XG7nnpDAdiZEHM", 
+        authDomain: "confessionapp-3a7fe.firebaseapp.com",
+        projectId: "confessionapp-3a7fe",
+        storageBucket: "confessionapp-3a7fe.appspot.com",
+        messagingSenderId: "191839873255",
+        appId: "1:191839873255:web:843d523695e1f8899e5a42",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    const authSection = document.getElementById('authSection');
+    const mainContent = document.getElementById('mainContent');
+    const navlinks = document.getElementById('navLinks');
+    const navtoggle = document.getElementById('navtoggle');
+    const servicessection = document.getElementById('servicessection');
+    const aboutsection = document.getElementById('aboutsection');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const signupBtn = document.getElementById('signupBtn');
+    const signinBtn = document.getElementById('signinBtn');
+    const authError = document.getElementById('authError');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const confessionText = document.getElementById('confessionText');
+    const addConfessionBtn = document.getElementById('addConfessionBtn');
+    const categoryDropdown = document.getElementById('categoryDropdown');
+    const addConfessionError = document.getElementById('addConfessionError');
+    const searchInput = document.getElementById('searchInput');
+    const confessionsList = document.getElementById('confessionsList');
+    const categoryFilters = document.getElementById('categoryFilters');
+    const paginationControls = document.getElementById('paginationControls');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const pageInfo = document.getElementById('pageInfo');
+
+    let firstVisible;
+    let lastVisible;
+    let currentPage = 1;
+    let currentCategory = '';
+    const confessionsPerPage = 10;
+    let unsubscribe; 
+
+    signupBtn.onclick = () => auth.createUserWithEmailAndPassword(emailInput.value, passwordInput.value).catch(err => authError.textContent = err.message);
+    signinBtn.onclick = () => auth.signInWithEmailAndPassword(emailInput.value, passwordInput.value).catch(err => authError.textContent = err.message);
+    logoutBtn.onclick = () => auth.signOut();
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        authSection.style.display = 'none';
+        mainContent.style.display = 'flex';
+        servicessection.style.display = 'none';
+        aboutsection.style.display = 'none';
+        navlinks.style.display = 'none';
+        navtoggle.style.display = 'none';
+        resetAndLoadConfessions();
+      } else {
+        authSection.style.display = 'block';
+        mainContent.style.display = 'none';
+        servicessection.style.display = 'block';
+        aboutsection.style.display = 'block';
+        navtoggle.style.display = 'block';
+        if (unsubscribe) unsubscribe(); 
+      }
+    });
+
+    function resetAndLoadConfessions() {
+        currentPage = 1;
+        currentCategory = '';
+        searchInput.value = '';
+        lastVisible = null;
+        firstVisible = null;
+        loadConfessions();
+    }
+    
+    function loadConfessions(direction) {
+        if (unsubscribe) {
+            unsubscribe(); 
+        }
+
+        let query = db.collection('confessions');
+
+        if (currentCategory) {
+            query = query.where('category', '==', currentCategory);
+        }
+
+        query = query.orderBy('timestamp', 'desc');
+        
+        if (direction === 'next' && lastVisible) {
+            query = query.startAfter(lastVisible);
+            currentPage++;
+        } else if (direction === 'prev' && firstVisible) {
+            query = query.endBefore(firstVisible).limitToLast(confessionsPerPage);
+            currentPage--;
+        } else {
+            query = query.limit(confessionsPerPage);
+            currentPage = 1;
+        }
+        unsubscribe = query.onSnapshot(documentSnapshots => {
+            if (documentSnapshots.empty) {
+                if (currentPage <= 1) { 
+                    confessionsList.innerHTML = '<li>No confessions found in this category.</li>';
+                }
+                paginationControls.style.display = 'flex';
+                updatePaginationButtons(0);
+                return;
+            }
+
+            const docs = direction === 'prev' ? documentSnapshots.docs.reverse() : documentSnapshots.docs;
+            
+            displayConfessionsFromSnapshot({ docs: docs });
+
+            firstVisible = documentSnapshots.docs[0];
+            lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+            paginationControls.style.display = 'flex';
+            updatePaginationButtons(documentSnapshots.size);
+
+        }, err => {
+            console.error("Error fetching confessions:", err);
+            if (err.code === 'failed-precondition') {
+                confessionsList.innerHTML = `<li><b>Error:</b> This query requires a database index. Please open the browser's developer console (F12), find the error message, and click the link to create the index in your Firebase console.</li>`;
+            } else {
+                confessionsList.innerHTML = '<li>Error loading confessions.</li>';
+            }
+        });
+    }
+    
+    function updatePaginationButtons(docsOnPage) {
+        pageInfo.textContent = `Page ${currentPage}`;
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = docsOnPage < confessionsPerPage;
+    }
+
+    addConfessionBtn.onclick = () => {
+        const text = confessionText.value.trim();
+        const category = categoryDropdown.value;
+        if (!text || !category) {
+            addConfessionError.textContent = "Please write a confession and select a category.";
+            return;
+        }
+        db.collection("confessions").add({
+            userId: auth.currentUser.uid,
+            text: escapeHtml(text),
+            category,
+            likes: 0,
+            likedBy: [],
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        }).then(() => {
+            confessionText.value = "";
+            categoryDropdown.value = "";
+            resetAndLoadConfessions(); 
+        }).catch(err => addConfessionError.textContent = "Error: " + err.message);
+    };
+
+    nextBtn.addEventListener('click', () => loadConfessions('next'));
+    prevBtn.addEventListener('click', () => loadConfessions('prev'));
+
+    categoryFilters.addEventListener('click', e => {
+        if (e.target.tagName === 'BUTTON') {
+            currentCategory = e.target.dataset.category;
+            currentPage = 1;
+            lastVisible = null;
+            firstVisible = null;
+            loadConfessions();
+        }
+    });
+
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        if (unsubscribe) unsubscribe();
+
+        if (searchTerm.length > 2) {
+            paginationControls.style.display = 'none';
+            db.collection('confessions').orderBy('timestamp', 'desc').get().then(snapshot => {
+                const results = snapshot.docs.filter(doc => doc.data().text.toLowerCase().includes(searchTerm));
+                displayConfessionsFromSnapshot({ docs: results });
+            });
+        } else if (searchTerm.length === 0) {
+            loadConfessions();
+        }
+    });
+
+    confessionsList.addEventListener('click', e => {
+        const likeBtn = e.target.closest('.like-btn');
+        if (likeBtn) {
+            toggleLike(likeBtn.parentElement.dataset.id);
+        }
+    });
+
+    function displayConfessionsFromSnapshot(snapshot) {
+        confessionsList.innerHTML = '';
+        snapshot.docs.forEach(doc => {
+            const data = doc.data();
+            const li = document.createElement('li');
+            li.dataset.id = doc.id;
+            li.innerHTML = `
+                <p>${data.text}</p>
+                <small><strong>Category:</strong> ${data.category} | <strong>Posted:</strong> ${data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString() : 'N/A'}</small>
+                <button class="like-btn"><i class="fa-regular fa-thumbs-up"></i> <span>${data.likes || 0}</span></button>
+            `;
+            confessionsList.appendChild(li);
+        });
+    }
+
+    function toggleLike(id) {
+        const user = auth.currentUser;
+        if (!user) return;
+        const ref = db.collection('confessions').doc(id);
+        db.runTransaction(t => t.get(ref).then(doc => {
+            if (!doc.exists) return;
+            const likedBy = doc.data().likedBy || [];
+            
+            if (likedBy.includes(user.uid)) {
+                t.update(ref, { 
+                    likes: firebase.firestore.FieldValue.increment(-1), 
+                    likedBy: firebase.firestore.FieldValue.arrayRemove(user.uid) 
+                });
+            } else {
+                t.update(ref, { 
+                    likes: firebase.firestore.FieldValue.increment(1), 
+                    likedBy: firebase.firestore.FieldValue.arrayUnion(user.uid) 
+                });
+            }
+        })).catch(err => console.error("Like transaction failed:", err));
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+  </script>
+</body>
+</html>
