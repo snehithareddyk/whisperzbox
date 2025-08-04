@@ -118,7 +118,7 @@
               Welcome to WhisperzBox, a unique platform designed to give everyone a voice. Our mission is to create a safe, anonymous space where individuals can share their confessions, explore the thoughts of others, and connect through meaningful reactions.
               </p>
               <p>
-              Built on the values of inclusivity and authenticity, WhisperBoxx empowers users to express themselves freely without fear of judgment. Whether you’re here to unburden your heart, find solace in shared experiences, or simply engage with stories that resonate you.
+              Built on the values of inclusivity and authenticity, WhisperzBox empowers users to express themselves freely without fear of judgment. Whether you’re here to unburden your heart, find solace in shared experiences, or simply engage with stories that resonate you.
               </p>
               <p>
               Join us as every voice is heard, every story matters, and every whisper becomes a step toward understanding and empathy. Let’s embrace the power of unfiltered expression!
@@ -176,7 +176,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-    // --- START: CORRECTED SCRIPT ---
     const firebaseConfig = {
         apiKey: "AIzaSyBKYiaMvGVCImG0fUCg_XG7nnpDAdiZEHM", 
         authDomain: "confessionapp-3a7fe.firebaseapp.com",
@@ -190,7 +189,6 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // DOM Elements
     const authSection = document.getElementById('authSection');
     const mainContent = document.getElementById('mainContent');
     const navLinks = document.getElementById('navLinks');
@@ -215,31 +213,26 @@
     const nextBtn = document.getElementById('nextBtn');
     const pageInfo = document.getElementById('pageInfo');
 
-    // App State
     let firstVisible, lastVisible;
     let currentPage = 1;
     let currentCategory = '';
     const confessionsPerPage = 10;
     let unsubscribe; 
 
-    // --- Authentication ---
     signupBtn.onclick = () => auth.createUserWithEmailAndPassword(emailInput.value, passwordInput.value).catch(err => authError.textContent = err.message);
     signinBtn.onclick = () => auth.signInWithEmailAndPassword(emailInput.value, passwordInput.value).catch(err => authError.textContent = err.message);
     logoutBtn.onclick = () => auth.signOut();
 
     auth.onAuthStateChanged(user => {
       if (user) {
-        // User is signed in, set up the app view
         authSection.style.display = 'none';
         mainContent.style.display = 'flex';
         servicessection.style.display = 'none';
         aboutsection.style.display = 'none';
         navLinks.style.display = 'none';
         navToggle.style.display = 'none';
-        // This is the key change: Directly load confessions with default "All" filter.
         loadConfessionsByCategory('');
       } else {
-        // User is signed out, show the login view
         authSection.style.display = 'block';
         mainContent.style.display = 'none';
         servicessection.style.display = 'block';
@@ -249,7 +242,6 @@
       }
     });
 
-    // --- Main Loading Function ---
     function loadConfessions(query, direction) {
       if (unsubscribe) unsubscribe();
 
@@ -276,7 +268,6 @@
       });
     }
 
-    // --- Action Functions ---
     function loadConfessionsByCategory(category) {
         currentCategory = category;
         currentPage = 1;
@@ -307,7 +298,6 @@
         loadConfessions(query, direction);
     }
     
-    // --- Event Listeners ---
     nextBtn.addEventListener('click', () => paginate('next'));
     prevBtn.addEventListener('click', () => paginate('prev'));
 
@@ -335,7 +325,6 @@
         }).then(() => {
             confessionText.value = "";
             categoryDropdown.value = "";
-            // Go back to the main "All" feed to show the new post
             loadConfessionsByCategory('');
         }).catch(err => addConfessionError.textContent = "Error: " + err.message);
     };
@@ -347,7 +336,6 @@
         }
     });
 
-    // --- Helper Functions ---
     function updatePaginationButtons(docsOnPage) {
         pageInfo.textContent = `Page ${currentPage}`;
         prevBtn.disabled = currentPage === 1;
@@ -395,7 +383,6 @@
         div.textContent = text;
         return div.innerHTML;
     }
-    // --- END: CORRECTED SCRIPT ---
   </script>
 
 </body>
